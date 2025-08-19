@@ -110,4 +110,5 @@ When the developers of the extension think that a new release is ready and teste
 * [Pascal Casier](https://github.com/ePascalC) - For the help with the glossaries and hotkeys
 * [Aurélien Joahny](https://github.com/ajoah) - For all the patches
 * [Jb Audras](https://github.com/audrasjb) - Ex co-Maintainer
+* [Peter Smits](https://github.com/psmits1567) - For all the patches
 

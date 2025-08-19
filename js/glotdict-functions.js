@@ -806,3 +806,19 @@ function gd_occurrences( string, subString ) {
 	}
 	return n;
 }
+
+function gd_check_for_URL(word, translatedText) {
+	if (!word || !translatedText) return false;
+
+	const lowerWord = word.toLowerCase();
+	const textWithoutTags = translatedText.replace(/<[^>]*>/g, '');
+	const fullURLRegex = /\b(?:https?|ftp):\/\/[^\s"'<>]+/gi;
+	const partialPathRegex = /\b[a-zA-Z0-9\-_.\/]*wp-content\/plugins\/[^\s"'<>]*/gi;
+	const matches = [
+		...(textWithoutTags.match(fullURLRegex) || []),
+		...(textWithoutTags.match(partialPathRegex) || []),
+		textWithoutTags
+	];
+
+	return matches.some(entry => entry.toLowerCase().includes(lowerWord));
+}

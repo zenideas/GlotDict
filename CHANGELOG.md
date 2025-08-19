@@ -1,14 +1,13 @@
 # 2.1.5
 
-* Fix: columns where not added on large pages
+* Fix: Columns where not added on large pages
 * Fix: The button to hide sticky header was no longer shown
-* Enhancement: Buttons do now show Tooltip
-
+* Enhancement: Buttons do now show Tooltips
+* Enhancement: Add function to check if glossary word is within a URL
 
 # 2.1.4
 
 * Enhancement: Quick actions button improved
-
 
 # 2.1.3
 

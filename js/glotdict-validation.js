@@ -54,6 +54,7 @@ function gd_search_glossary_on_translation( e, selector ) {
 		}
 
 		translations.each( ( i, translation ) => {
+			var translatedText = translation.value;
 			const glossary_words = jQuery( '.glossary-word', originals[original_index] ).map( function() {return this.textContent;} ).get();
 			const words_with_warning = [];
 			jQuery( '.glossary-word', originals[original_index] ).each( ( j, glossary_element ) => {
@@ -90,7 +91,14 @@ function gd_search_glossary_on_translation( e, selector ) {
 						message = 'The translation does not contain any of the suggested translations';
 					}
 					const form = translations.length > 1 ? ( original_index === SINGULAR ? ' for singular' : ' for plural' ) : '';
-					jQuery( '.textareas', $editor ).prepend( gd_get_warning( `${message} (${reset}) for the term “<i>${term}</i>“ ${count}${form}.`, discard ) );
+					let is_within_URL = gd_check_for_URL(glossary_word, translatedText);
+					if (is_within_URL == false) {
+						jQuery('.textareas', $editor).prepend(gd_get_warning(`${message} (${reset}) for the term “<i>${term}</i>“ ${count}${form}.`, discard));
+					}
+					else {
+						howmany--
+						return howmany;
+					}
 				}
 			} );
 			original_index = PLURAL;
