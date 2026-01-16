@@ -17,14 +17,10 @@ function sanitize_value( value ) {
  */
 function gd_today() {
 	const today = new Date();
-	let todayn = today.getDate();
-	if ( 1 === todayn.length ) {
-		todayn = `0${todayn}`;
-	}
-	let monthn = today.getMonth() + 1;
-	if ( 1 === monthn.length ) {
-		monthn = `0${monthn}`;
-	}
+	// Converting number to string using padStart
+	const todayn = String( today.getDate() ).padStart( 2, '0' );
+	const monthn = String( today.getMonth() + 1 ).padStart( 2, '0' );
+	
 	return `${todayn}/${monthn}/${today.getFullYear()}`;
 }
 
@@ -795,16 +791,13 @@ function gd_pagination() {
  * @return {number}
  */
 function gd_occurrences( string, subString ) {
-	string = `${string.toLowerCase()}`;
-	subString = `${subString.toLowerCase()}`;
-	if ( subString.length <= 0 ) { return ( string.length + 1 ); }
-	let n = 0, pos = 0;
-	const step = subString.length;
-	while ( true ) {
-		pos = string.indexOf( subString, pos );
-		if ( pos >= 0 ) { ++n; pos += step; } else { break; }
+	string = String( string ).toLowerCase();
+	subString = String( subString ).toLowerCase();
+
+	if ( subString.length <= 0 ) {
+		return 0;
 	}
-	return n;
+	return string.split( subString ).length - 1;
 }
 
 function gd_check_for_URL(word, translatedText) {
